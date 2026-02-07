@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public Vector3 moveDirection;
     public float speed;
+    public float jumpForce;
 
+    public LayerMask groundMask;
     public Rigidbody rb;
 
     public bool itemHeld;
@@ -30,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = new Vector3(x, 0, z); 
         transform.Translate(speed * Time.deltaTime * moveDirection);
 
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (!itemHeld)
@@ -49,6 +56,18 @@ public class PlayerMovement : MonoBehaviour
                 currentItem.GetComponent<Rigidbody>().useGravity = true; // get rigidbody component from currentitem and set gravity usage to true
                 currentItem = null; //clear current item by setting it to null
             }
+        }
+    }
+    bool IsGrounded()
+    {
+        if (Physics.Raycast(transform.position - new Vector3(0, .9f, 0), Vector3.down,
+            out RaycastHit hit, .2f, groundMask))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
