@@ -10,6 +10,7 @@ public class CameraMovement : MonoBehaviour
     public float minY = -75;
     public float maxY = 75;
 
+    public bool camLock;
     // Start is called before the first frame update
     void Start()
     {
