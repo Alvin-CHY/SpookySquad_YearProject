@@ -6,6 +6,10 @@ TagManager:
   tags:
   - FxTemporaire
   - Throwable
+  - KitchenDoor
+  - BedroomDoor
+  - BathroomDoor
+  - Inside
   layers:
   - Default
   - TransparentFX
