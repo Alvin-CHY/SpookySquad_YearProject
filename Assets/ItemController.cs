@@ -8,6 +8,7 @@ public class ItemController : MonoBehaviour
     public Transform holderPosition;
 
     public float rotationSpeed = 200f;
+    public string itemName = "???";
     // Start is called before the first frame update
     void Start()
     {
