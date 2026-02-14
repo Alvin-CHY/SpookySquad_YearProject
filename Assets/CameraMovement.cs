@@ -11,6 +11,7 @@ public class CameraMovement : MonoBehaviour
     public float maxY = 75;
 
     public bool camLock;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +21,20 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        MouseLook();
+        PlayerMovement pm = player.GetComponent<PlayerMovement>();
+
+        if (!pm.isInspecting)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            MouseLook();
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
     }
     void MouseLook()
     {

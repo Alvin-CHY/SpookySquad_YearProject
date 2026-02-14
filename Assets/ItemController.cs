@@ -7,6 +7,7 @@ public class ItemController : MonoBehaviour
     public bool isHeld;
     public Transform holderPosition;
 
+    public float rotationSpeed = 200f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,12 @@ public class ItemController : MonoBehaviour
         if (isHeld)
         {
             transform.position = holderPosition.position;
+
+            float mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
+
+            transform.Rotate(Vector3.up, -mouseX, Space.World);
+            transform.Rotate(Vector3.right, mouseY, Space.World);
         }
         else
         {
