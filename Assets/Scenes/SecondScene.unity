@@ -865,7 +865,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_Range: 12
   m_SpotAngle: 35
   m_InnerSpotAngle: 3
@@ -2898,7 +2898,7 @@ MonoBehaviour:
       m_Calls: []
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
-  m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
+  m_SelectionColor: {r: 0.42452818, g: 0.6758836, b: 1, a: 0.7529412}
   m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
