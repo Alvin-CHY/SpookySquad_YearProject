@@ -866,7 +866,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 12
   m_SpotAngle: 35
   m_InnerSpotAngle: 3
   m_CookieSize: 10
@@ -2695,8 +2695,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: 0}
-  speed: 5
-  jumpForce: 4
+  speed: 1.5
+  jumpForce: 2
   groundMask:
     serializedVersion: 2
     m_Bits: 128
