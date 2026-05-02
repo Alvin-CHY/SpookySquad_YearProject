@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class GMScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject startScreenUI;
+    public GameObject player;
+
     void Start()
     {
-        
+        player.SetActive(false);
+        Time.timeScale = 0f;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartGame()
     {
-        
+        startScreenUI.SetActive(false); // hide menu
+        player.SetActive(true);         // enable gameplay
+        Time.timeScale = 1f;            // resume game
     }
 }
