@@ -433,6 +433,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isInspecting: 0
+  normalSpeed: 2
+  walkSpeed: 0.75
+  crouchHeight: 0.5
+  normalHeight: 1
 --- !u!1 &551483811
 GameObject:
   m_ObjectHideFlags: 0
