@@ -6,7 +6,7 @@ public class InteractionUI : MonoBehaviour
     public float interactDistance = 1.5f;
     public LayerMask interactMask;
 
-    public TextMeshProUGUI interactText;
+    //public TextMeshProUGUI interactText;
 
     void Update()
     {
@@ -21,12 +21,12 @@ public class InteractionUI : MonoBehaviour
 
             if (item != null)
             {
-                interactText.gameObject.SetActive(true);
-                interactText.text = item.itemName;
+                //interactText.gameObject.SetActive(true);
+                //interactText.text = item.itemName;
                 return;
             }
         }
 
-        interactText.gameObject.SetActive(false);
+       // interactText.gameObject.SetActive(false);
     }
 }
