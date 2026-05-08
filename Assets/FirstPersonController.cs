@@ -18,10 +18,20 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask interactMask;
 
     public bool isInspecting;
+
+    [Header("Movement Speeds")]
+    public float normalSpeed;
+    public float walkSpeed;   // slower speed when holding Shift
+
+    [Header("Crouch")]
+    public float crouchHeight = 0.5f;
+    public float normalHeight = 1f;
+    private Vector3 originalScale;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        originalScale = transform.localScale;
 
     }
 
@@ -33,8 +43,12 @@ public class PlayerMovement : MonoBehaviour
             float x = Input.GetAxisRaw("Horizontal");
             float z = Input.GetAxisRaw("Vertical");
 
-            moveDirection = new Vector3(x, 0, z);
-            transform.Translate(speed * Time.deltaTime * moveDirection);
+            moveDirection = new Vector3(x, 0, z).normalized;
+
+            float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? walkSpeed : normalSpeed;
+
+            Vector3 move = transform.TransformDirection(moveDirection) * currentSpeed;
+            rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
         }
 
 
@@ -64,6 +78,16 @@ public class PlayerMovement : MonoBehaviour
                 currentItem.GetComponent<Rigidbody>().useGravity = true; // get rigidbody component from currentitem and set gravity usage to true
                 currentItem = null; //clear current item by setting it to null
             }
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            // Crouching
+            transform.localScale = new Vector3(originalScale.x, crouchHeight, originalScale.z);
+        }
+        else
+        {
+            // Return to normal
+            transform.localScale = originalScale;
         }
     }
     bool IsGrounded()
