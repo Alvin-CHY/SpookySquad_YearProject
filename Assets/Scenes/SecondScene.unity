@@ -2675,6 +2675,7 @@ GameObject:
   - component: {fileID: 1505820159}
   - component: {fileID: 1505820158}
   - component: {fileID: 1505820157}
+  - component: {fileID: 1505820161}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Player
@@ -2710,7 +2711,7 @@ MonoBehaviour:
   isInspecting: 0
   normalSpeed: 2
   walkSpeed: 0.75
-  crouchHeight: 0.5
+  crouchHeight: 0.4
   normalHeight: 1
 --- !u!136 &1505820158
 CapsuleCollider:
@@ -2731,10 +2732,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.28541708
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.5, z: 0.21458292}
 --- !u!54 &1505820159
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2778,6 +2779,19 @@ Transform:
   - {fileID: 7827386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1505820161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505820156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6629d14ec5ea54eaa961515cd9dd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashlight: {fileID: 375977300}
 --- !u!1 &1514405180
 GameObject:
   m_ObjectHideFlags: 0
