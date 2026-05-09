@@ -7,7 +7,7 @@ public class InteractionUI : MonoBehaviour
     public float interactDistance = 3f;
     public LayerMask interactMask;
 
-    //public TextMeshProUGUI interactText;
+    public TextMeshProUGUI interactText;
 
     [Header("References")]
     public Camera playerCamera;
@@ -41,12 +41,12 @@ public class InteractionUI : MonoBehaviour
 
             if (item != null)
             {
-                //interactText.gameObject.SetActive(true);
-                //interactText.text = item.itemName;
+                interactText.gameObject.SetActive(true);
+                interactText.text = item.itemName;
                 return;
             }
         }
 
-       // interactText.gameObject.SetActive(false);
+       interactText.gameObject.SetActive(false);
     }
 }
