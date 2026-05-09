@@ -3,10 +3,20 @@ using TMPro;
 
 public class InteractionUI : MonoBehaviour
 {
-    public float interactDistance = 1.5f;
+    [Header("Interaction")]
+    public float interactDistance = 3f;
     public LayerMask interactMask;
 
+    [Header("UI")]
     public TextMeshProUGUI interactText;
+
+    [Header("References")]
+    public Camera playerCamera;
+
+    void Start()
+    {
+        interactText.gameObject.SetActive(false);
+    }
 
     void Update()
     {
@@ -15,7 +25,18 @@ public class InteractionUI : MonoBehaviour
 
     void CheckForInteractable()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, interactDistance, interactMask))
+        Ray ray = new Ray(
+            playerCamera.transform.position,
+            playerCamera.transform.forward
+        );
+
+        Debug.DrawRay(
+            playerCamera.transform.position,
+            playerCamera.transform.forward * interactDistance,
+            Color.red
+        );
+
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactMask))
         {
             ItemController item = hit.collider.GetComponent<ItemController>();
 
@@ -23,6 +44,7 @@ public class InteractionUI : MonoBehaviour
             {
                 interactText.gameObject.SetActive(true);
                 interactText.text = item.itemName;
+
                 return;
             }
         }
