@@ -3,18 +3,18 @@ using TMPro;
 
 public class InteractionUI : MonoBehaviour
 {
-    [Header("Interaction")]
+   /* [Header("Interaction")]
     public float interactDistance = 3f;
     public LayerMask interactMask;
 
     //public TextMeshProUGUI interactText;
 
-    [Header("References")]
+    /[Header("References")]
     public Camera playerCamera;
 
     void Start()
     {
-        interactText.gameObject.SetActive(false);
+        //interactText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -48,5 +48,5 @@ public class InteractionUI : MonoBehaviour
         }
 
        // interactText.gameObject.SetActive(false);
-    }
+    }*/
 }

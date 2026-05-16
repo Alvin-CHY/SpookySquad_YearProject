@@ -15,12 +15,21 @@ public class GMScript : MonoBehaviour
     public string[] lines;
     public float textSpeed;
 
-    private int index;
+    public int index;
+    public int index1;
+
+    public GameObject flashlightPanel;
+    public TextMeshProUGUI flashlightText;
+    public string[] lines1;
+
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
+
+        flashlightPanel.SetActive(false);
+        flashlightText.text = string.Empty;
 
         namePanel.SetActive(true);
         textComponent.text = string.Empty;
@@ -40,12 +49,14 @@ public class GMScript : MonoBehaviour
             }
             else
             {
-                StopAllCoroutines();
+                StopCoroutine(TypeLine());
                 textComponent.text = lines[index];
             }
         }
 
-       if (score == 0) //box with code activated - after user gets remote. score +=1
+     
+
+        if (score == 0) //box with code activated - after user gets remote. score +=1
         {
 
 
@@ -67,11 +78,28 @@ public class GMScript : MonoBehaviour
 
     }
 
+    public void StartFlashlightText()
+    {
+        index1 = 0;
+        StartCoroutine(TypeText());
+
+    }
+
     IEnumerator TypeLine()
     {
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+
+    }
+
+   public IEnumerator TypeText()
+    {
+        foreach (char x in lines1[index1].ToCharArray())
+        {
+            flashlightText.text += x;
             yield return new WaitForSeconds(textSpeed);
         }
 
@@ -91,4 +119,7 @@ public class GMScript : MonoBehaviour
             dialougePanel.SetActive(false);
         }
     }
+
+
+
 }

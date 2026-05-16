@@ -10,6 +10,7 @@ TagManager:
   - BedroomDoor
   - BathroomDoor
   - Inside
+  - Flashlight
   layers:
   - Default
   - TransparentFX

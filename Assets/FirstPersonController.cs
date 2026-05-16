@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isInspecting;
 
+    public GMScript gm;
+
     [Header("Movement Speeds")]
     public float normalSpeed;
     public float walkSpeed;   // slower speed when holding Shift
@@ -100,6 +102,23 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        gm.namePanel.SetActive(true);
+        gm.flashlightPanel.SetActive(true);
+        gm.StartFlashlightText();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            gm.flashlightPanel.SetActive(false);
+            StopCoroutine(gm.TypeText());
+            gm.flashlightText.text = gm.lines1[gm.index1];
+            gm.namePanel.SetActive(false);
+            gm.dialougePanel.SetActive(false);
+
         }
     }
 }
