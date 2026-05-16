@@ -110,15 +110,14 @@ public class PlayerMovement : MonoBehaviour
         gm.namePanel.SetActive(true);
         gm.flashlightPanel.SetActive(true);
         gm.StartFlashlightText();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            gm.flashlightPanel.SetActive(false);
-            StopCoroutine(gm.TypeText());
-            gm.flashlightText.text = gm.lines1[gm.index1];
-            gm.namePanel.SetActive(false);
-            gm.dialougePanel.SetActive(false);
-
-        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        StopCoroutine(gm.TypeText());
+        gm.flashlightText.text = gm.lines1[gm.index1];
+        gm.dialougePanel.SetActive(false);
+        gm.namePanel.SetActive(false);
+        gm.flashlightText.text = string.Empty;
+        gm.flashlightPanel.SetActive(false);
     }
 }
