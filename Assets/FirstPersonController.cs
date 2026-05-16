@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isInspecting;
 
     public GMScript gm;
+    public SecondSceneDialouge ssdialouge;
 
     [Header("Movement Speeds")]
     public float normalSpeed;
@@ -107,17 +108,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gm.namePanel.SetActive(true);
-        gm.flashlightPanel.SetActive(true);
-        gm.StartFlashlightText();
+        if (other.CompareTag("Flashlight"))
+        {
+            gm.namePanel.SetActive(true);
+            gm.flashlightPanel.SetActive(true);
+            gm.StartFlashlightText();
+        }
+        if (other.CompareTag("Door"))
+        {
+            ssdialouge.namePanel.SetActive(true);
+            ssdialouge.doorPanel.SetActive(true);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        StopCoroutine(gm.TypeText());
-        gm.flashlightText.text = gm.lines1[gm.index1];
-        gm.dialougePanel.SetActive(false);
-        gm.namePanel.SetActive(false);
-        gm.flashlightText.text = string.Empty;
-        gm.flashlightPanel.SetActive(false);
+        if (other.CompareTag("Flashlight"))
+        {
+            StopCoroutine(gm.TypeText());
+            gm.flashlightText.text = gm.lines1[gm.index1];
+            gm.dialougePanel.SetActive(false);
+            gm.namePanel.SetActive(false);
+            gm.flashlightText.text = string.Empty;
+            gm.flashlightPanel.SetActive(false);
+        }
+        if (other.CompareTag("Door"))
+        {
+            ssdialouge.namePanel.SetActive(false);
+            ssdialouge.doorPanel.SetActive(false);
+        }
     }
 }

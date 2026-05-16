@@ -11,6 +11,7 @@ TagManager:
   - BathroomDoor
   - Inside
   - Flashlight
+  - Door
   layers:
   - Default
   - TransparentFX
